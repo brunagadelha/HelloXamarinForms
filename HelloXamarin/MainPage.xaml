@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="HelloXamarin.MainPage">
+
+    <StackLayout Padding="0,20,0,0" Margin="20,20,20,20">
+
+        <Label 
+            Text="Produto" 
+            HorizontalOptions="Start"/>
+
+        <Entry x:Name="ProductName" Placeholder="" />
+
+        <Label 
+            Text="Quantidade" 
+            HorizontalOptions="Start"/>
+
+        <Entry x:Name="Quantity" Placeholder="0" Keyboard="Numeric" />
+
+        <Label 
+            Text="Valor"
+            HorizontalOptions="Start"/>
+
+        <Entry x:Name="Value" Placeholder="R$ 0,00" 
+               Keyboard="Numeric" />
+
+        <Button Text="Adicionar" Clicked="Button_Clicked" BackgroundColor="DarkOrange" TextColor="White"></Button>
+
+        <Label 
+            Text="Valor Total"
+            HorizontalOptions="End"/>
+
+        <Label x:Name="Total" Text="R$0,00" HorizontalTextAlignment="End" FontSize="30"/>
+
+        <ListView x:Name="ItemsList" Header="" HasUnevenRows="True" Margin="0,20,0,0">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Text="Descrição" FontAttributes="Bold" />
+                        <Label Grid.Column="1" Text="Quantidade" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+                        <Label Grid.Column="2" Text="V. Unitário" FontAttributes="Bold" />
+                        <Label Grid.Column="3" Text="V. Total" FontAttributes="Bold" HorizontalTextAlignment="End"  />
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Label Text="{Binding Name}"/>
+                            <Label Grid.Column="1" Text="{Binding Quantity}" HorizontalTextAlignment="Center"  />
+                            <Label Grid.Column="2" Text="{Binding FormattedValue}" />
+                            <Label Grid.Column="3" Text="{Binding FormattedTotal}" HorizontalTextAlignment="End" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>
